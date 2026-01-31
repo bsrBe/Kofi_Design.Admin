@@ -100,6 +100,14 @@ export const AdminRevisionLog = ({ orderId }: AdminRevisionLogProps) => {
                                     <p className="text-slate-300 text-lg font-medium leading-relaxed italic">"{rev.changesRequested}"</p>
                                 </div>
 
+                                {rev.inspirationPhoto && (
+                                    <div className="grid grid-cols-4 gap-4">
+                                        <div className="aspect-square rounded-lg overflow-hidden border border-slate-800 group-hover:border-slate-700 transition-all">
+                                            <img src={rev.inspirationPhoto} className="w-full h-full object-cover" alt="Revision attachment" />
+                                        </div>
+                                    </div>
+                                )}
+
                                 {rev.revisionPhotos && rev.revisionPhotos.length > 0 && (
                                     <div className="grid grid-cols-4 gap-4">
                                         {rev.revisionPhotos.map((p: string, i: number) => (
