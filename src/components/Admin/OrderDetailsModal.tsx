@@ -3,6 +3,8 @@ import { cn } from '../../lib/utils';
 import { useEffect, useState } from 'react';
 import { adminService } from '../../services/adminService';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 interface OrderDetailsModalProps {
     orderId: string;
     onClose: () => void;
@@ -117,14 +119,16 @@ export const OrderDetailsModal = ({ orderId, onClose }: OrderDetailsModalProps) 
                                     </div>
                                 </div>
 
-                                {/* Inspiration Photo */}
+                                {/* Inspiration / Collection Photo */}
                                 <div className="bg-[#1c1c1c] border border-white/5 rounded-xl p-5">
-                                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Inspiration Photo</h3>
-                                    {order.inspirationPhoto ? (
+                                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">
+                                        {order.collectionId ? 'Collection Item' : 'Inspiration Photo'}
+                                    </h3>
+                                    {order.inspirationPhoto || (order.collectionId && order.collectionId.image) ? (
                                         <div className="aspect-[4/5] rounded-lg overflow-hidden border border-white/10">
                                             <img
-                                                src={order.inspirationPhoto}
-                                                alt="Inspiration"
+                                                src={order.inspirationPhoto || (order.collectionId.image?.startsWith('http') ? order.collectionId.image : `${API_URL}/media/${order.collectionId.image}`)}
+                                                alt={order.collectionId?.title || "Inspiration"}
                                                 className="w-full h-full object-cover"
                                             />
                                         </div>
@@ -133,6 +137,11 @@ export const OrderDetailsModal = ({ orderId, onClose }: OrderDetailsModalProps) 
                                             <ImageIcon className="size-8 mb-2" />
                                             <span className="text-xs">No photo uploaded</span>
                                         </div>
+                                    )}
+                                    {order.collectionId && (
+                                        <p className="mt-3 text-sm font-bold text-admin-primary">
+                                            {order.collectionId.title}
+                                        </p>
                                     )}
                                 </div>
                             </div>
@@ -143,8 +152,8 @@ export const OrderDetailsModal = ({ orderId, onClose }: OrderDetailsModalProps) 
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     <div>
                                         <span className="text-xs text-slate-500">Type</span>
-                                        <p className="text-sm font-medium text-white">
-                                            {order.orderType === 'custom_event_dress' ? 'Event Dress' : 'Signature'}
+                                        <p className="text-sm font-medium text-white capitalize">
+                                            {order.orderType?.replace(/_/g, ' ')}
                                         </p>
                                     </div>
                                     <div>
@@ -189,8 +198,10 @@ export const OrderDetailsModal = ({ orderId, onClose }: OrderDetailsModalProps) 
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     {order.measurements && Object.entries(order.measurements).map(([key, value]: [string, any]) => (
                                         <div key={key} className="bg-slate-900/50 rounded-lg p-3">
-                                            <span className="text-xs text-slate-500 capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
-                                            <p className="text-lg font-bold text-white">{value}</p>
+                                            <span className="text-[10px] text-slate-500 uppercase tracking-widest block mb-1">
+                                                {key.replace(/([A-Z])/g, ' $1').trim()}
+                                            </span>
+                                            <p className="text-lg font-bold text-white">{value} <span className="text-xs font-normal text-slate-500">cm</span></p>
                                         </div>
                                     ))}
                                 </div>

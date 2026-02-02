@@ -95,7 +95,7 @@ export const AdminLogin = ({ onLoginSuccess }: { onLoginSuccess: () => void }) =
                             <Diamond className="size-8 fill-current" />
                         </div>
                         <div>
-                            <h1 className="text-3xl font-black text-white uppercase italic tracking-tighter">Kofi's Command</h1>
+                            <h1 className="text-3xl font-black text-white uppercase italic tracking-tighter">Keni's Command</h1>
                             <p className="text-slate-500 font-bold uppercase text-[10px] tracking-[0.3em] mt-1">Authorized Personnel Only</p>
                         </div>
                     </header>
@@ -132,7 +132,7 @@ export const AdminLogin = ({ onLoginSuccess }: { onLoginSuccess: () => void }) =
                                         type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="admin@kofidesign.com"
+                                        placeholder="admin@kenidesign.com"
                                         className="w-full bg-[#0f172a] border border-slate-800 rounded-2xl py-4 pl-12 pr-6 text-white text-sm focus:outline-none focus:border-admin-primary transition-all font-medium placeholder:text-slate-700"
                                         required
                                     />
@@ -186,7 +186,7 @@ export const AdminLogin = ({ onLoginSuccess }: { onLoginSuccess: () => void }) =
                                         type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="admin@kofidesign.com"
+                                        placeholder="admin@keni'sdesign.com"
                                         className="w-full bg-[#0f172a] border border-slate-800 rounded-2xl py-4 pl-12 pr-6 text-white text-sm focus:outline-none focus:border-admin-primary transition-all font-medium placeholder:text-slate-700"
                                         required
                                     />
@@ -270,7 +270,7 @@ export const AdminLogin = ({ onLoginSuccess }: { onLoginSuccess: () => void }) =
 
                     <footer className="mt-10 text-center">
                         <p className="text-slate-600 text-[9px] font-medium uppercase tracking-[0.2em]">
-                            Property of Kofi Design Studios © 2026
+                            Property of Keni Design Studios © 2026
                         </p>
                     </footer>
                 </div>

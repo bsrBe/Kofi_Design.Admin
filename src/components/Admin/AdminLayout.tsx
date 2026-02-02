@@ -37,7 +37,7 @@ export const AdminLayout = ({ children, activeTab, setActiveTab, onLogout }: Adm
                     <div className="size-8 text-accent-gold">
                         <Diamond className="w-full h-full fill-current" />
                     </div>
-                    <h1 className="font-bold text-lg tracking-tight text-white whitespace-nowrap uppercase">Kofi's Design</h1>
+                    <h1 className="font-bold text-lg tracking-tight text-white whitespace-nowrap uppercase">Keni's Design</h1>
                 </div>
 
                 <div className="flex-1 px-4 py-4">
